@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Shoes" ALTER COLUMN "image" DROP DEFAULT;
