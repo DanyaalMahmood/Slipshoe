@@ -1,15 +1,17 @@
-import { StyleSheet, View, Text,Image  } from "react-native";
+import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import logo from './../assets/logoblue.png'
 
-export default Login = () => {
+export default Login = ({ navigation, route }) => {
     return (
-            <View style={styles.container}>
-                <View style={styles.imageContainer}>
-                    <Image style={styles.image} source={logo} />
-                    <Text style={styles.imageText}> Welcome to Slipshoe</Text>
+        <View style={styles.container}>
+            <View style={styles.imageContainer}>
+                <Image style={styles.image} source={logo} />
+                <Text style={styles.imageText}> Welcome to Slipshoe</Text>
+                <Pressable onPress={() => { navigation.navigate('WriteReview') }}>
                     <Text style={styles.imageSubText}> Sing in to to continue</Text>
-                </View>
+                </Pressable>
             </View>
+        </View>
     )
 };
 
