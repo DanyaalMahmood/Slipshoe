@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Image, View, StyleSheet, Pressable, Text, ScrollView, FlatList, TouchableOpacity } from "react-native";
+import Icon from 'react-native-vector-icons/Ionicons';
+
 
 const reviews = [
     { id: '1', name: 'John', rating: 5, review: 'Great product!', date: 'Mar 10, 2022', images: [] },
@@ -49,7 +51,7 @@ export default ReviewProduct = ({ navigation, route }) => {
         <View style={styles.container}>
             <View style={styles.top}>
                 <Pressable onPress={() => navigation.navigate('Login')}>
-                    <Image style={styles.backImage} source={require('./../assets/back.png')} />
+                    <Icon name="chevron-back-outline" size={30} color="#9098B1" />
                 </Pressable>
                 <Text style={styles.totalReviews}>5 Review</Text>
                 <View style={styles.emptyView} />
@@ -99,7 +101,7 @@ const styles = StyleSheet.create({
         height: 24
     },
     totalReviews: {
-        paddingLeft: 20,
+        paddingLeft: 10,
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',

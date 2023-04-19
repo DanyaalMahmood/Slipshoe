@@ -1,6 +1,7 @@
 import { Image, View, StyleSheet, Pressable, Text, TextInput } from "react-native";
 import StarRating from 'react-native-star-rating';
 import React, { useState } from 'react';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 export default WriteReview = ({ navigation, route }) => {
@@ -10,7 +11,7 @@ export default WriteReview = ({ navigation, route }) => {
         <View style={styles.container}>
             <View style={styles.top}>
                 <Pressable onPress={() => navigation.navigate('Login')}>
-                    <Image style={styles.backImage} source={require('./../assets/back.png')} />
+                    <Icon name="chevron-back-outline" size={30} color="#9098B1" />
                 </Pressable>
                 <Text style={styles.reviewText}>Write Review</Text>
                 <View style={styles.emptyView} />
@@ -32,8 +33,8 @@ export default WriteReview = ({ navigation, route }) => {
             </View>
             <View style={styles.addPhotoContainer}>
                 <Text style={styles.addPhoto}>Add photo</Text>
-                <Pressable onPress={() => { navigation.navigate('ReviewProduct') }}>
-                    <Image style={styles.addImage} source={require('./../assets/addImage.png')} />
+                <Pressable style={styles.add} onPress={() => { navigation.navigate('ReviewProduct') }}>
+                    <Icon style={styles.addIcon} name="add" size={30} color="#9098B1" />
                 </Pressable>
             </View>
 
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
         width: 48
     },
     reviewText: {
-        paddingLeft: 20,
+        paddingLeft: 10,
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',
@@ -67,12 +68,13 @@ const styles = StyleSheet.create({
     },
     line: {
         height: 0.5,
-        backgroundColor: 'grey'
+        backgroundColor: '#EBF0FF'
     },
     rating: {
         padding: 16
     },
     ratingText: {
+        paddingTop: 10,
         color: '#223263',
         marginBottom: 30,
         fontWeight: 'bold',
@@ -94,12 +96,6 @@ const styles = StyleSheet.create({
         marginBottom: 16,
         minHeight: 160
     },
-    backImage: {
-        resizeMode: 'contain',
-        backgroundColor: '#fff',
-        width: 24,
-        height: 24
-    },
     addPhotoContainer: {
         flexDirection: 'column',
         alignItems: 'flex-start',
@@ -113,13 +109,17 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         marginBottom: 10
     },
-    addImage: {
-        width: 60,
-        height: 60,
+    add: {
+        width: 40,
+        height: 40,
         borderWidth: 0.5,
         borderColor: '#EBF0FF',
         borderRadius: 5,
         marginLeft: 10
     },
+    addIcon: {
+        marginTop: 3,
+        alignSelf: 'center'
+    }
 
 })

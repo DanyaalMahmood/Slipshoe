@@ -28,7 +28,7 @@ export default Login = ({navigation}) => {
                 <Image source={password} style={styles.icon(passwordFocus)} />
                 <TextInput inputMode="text" secureTextEntry={true} style={styles.input} placeholder="Password" onFocus={() => setPasswordFocus(true)} onBlur={() => setPasswordFocus(false)}/>
             </View>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={()=> {navigation.navigate('Notification')}}>
                 <Text style={styles.buttonText}>Sign In</Text>
             </TouchableOpacity>
 
@@ -38,7 +38,7 @@ export default Login = ({navigation}) => {
                 <View style={styles.bar} />
             </View>
 
-            <TouchableOpacity style={styles.orButton}>
+            <TouchableOpacity style={styles.orButton} onPress={()=>{navigation.navigate('Explore')}}>
                 <Image style={styles.orImage} source={google} />
                 <Text style={styles.orText}>Login with Google</Text>
             </TouchableOpacity>
