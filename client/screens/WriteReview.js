@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     },
     reviewInput: {
         borderWidth: 0.5,
-        borderColor: 'grey',
+        borderColor: '#EBF0FF',
         borderRadius: 4,
         padding: 8,
         paddingTop: 20,
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
         width: 60,
         height: 60,
         borderWidth: 0.5,
-        borderColor: '#ccc',
+        borderColor: '#EBF0FF',
         borderRadius: 5,
         marginLeft: 10
     },

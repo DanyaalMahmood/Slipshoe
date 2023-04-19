@@ -21,7 +21,6 @@ export default ReviewProduct = ({ navigation, route }) => {
                             <Image key={index} style={styles.star} source={require('./../assets/star.png')} />
                         ))}
                     </View>
-                    <Text style={styles.date}>{item.date}</Text>
                 </View>
             </View>
             <Text style={styles.reviewText}>{item.review}</Text>
@@ -36,6 +35,7 @@ export default ReviewProduct = ({ navigation, route }) => {
                     contentContainerStyle={styles.reviewImagesContainer}
                 />
             }
+            <Text style={styles.date}>{item.date}</Text>
         </View>
     );
 
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     },
     line: {
         height: 0.5,
-        backgroundColor: 'grey'
+        backgroundColor: '#EBF0FF'
     },
     filterContainer: {
         flexDirection: 'row',
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginRight: 10,
         borderWidth: 0.5,
-        borderColor: 'grey'
+        borderColor: '#EBF0FF'
     },
     activeFilterButton: {
         backgroundColor: '#c9e9f6',
@@ -140,7 +140,8 @@ const styles = StyleSheet.create({
         margin: 20,
         padding: 10,
         borderRadius: 5,
-        borderWidth: 0.1
+        borderWidth: 0.1,
+        borderColor: '#EBF0FF'
     },
     reviewHeader: {
         flexDirection: 'row',
@@ -157,8 +158,8 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     name: {
-        fontSize: 16,
-        fontWeight: 'bold',
+        fontSize: 14,
+        fontWeight: 700,
         marginBottom: 5,
     },
     starContainer: {
@@ -173,11 +174,13 @@ const styles = StyleSheet.create({
     },
     date: {
         fontSize: 12,
-        color: '#777',
+        color: '#9098B1',
     },
     reviewText: {
-        fontSize: 14,
+        fontSize: 13,
         marginBottom: 10,
+        color: '#9098B1',
+        fontWeight: 400,
     },
     reviewImagesContainer: {
         alignItems: 'flex-start',
@@ -185,9 +188,10 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
     reviewImage: {
-        width: 100,
-        height: 100,
+        width: 80,
+        height: 80,
         marginRight: 10,
+        marginTop: 15,
         borderRadius: 5,
     },
     reviewList: {
