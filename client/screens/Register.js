@@ -1,25 +1,31 @@
 import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity } from "react-native";
 import logo from './../assets/logoblue.png';
-import facebook from './../assets/facebook.png';
-import google from './../assets/google.png';
 import message from './../assets/message.png'
 import password from './../assets/password.png';
+import user from './../assets/user.png';
 
 
 import { useState } from "react";
 
-export default Login = ({navigation}) => {
+export default Register = ({navigation}) => {
+    const [nameFocus, setNameFocus] = useState(false);
     const [emailFocus, setEmailFocus] = useState(false);
     const [passwordFocus, setPasswordFocus] = useState(false);
+    const [passwordagainFocus, setPasswordagainFocus] = useState(false);
+    
 
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
                 <Image style={styles.image} source={logo} />
-                <Text style={styles.text}> Welcome to Slipshoe</Text>
-                <Text style={styles.imageSubText}> Sign in to to continue</Text>
+                <Text style={styles.text}> Lets Get Started</Text>
+                <Text style={styles.imageSubText}> Create a new account </Text>
             </View>
 
+            <View style={styles.inputContainer(nameFocus)}>
+                <Image source={user} style={styles.icon(nameFocus)} />
+                <TextInput inputMode="text" style={styles.input} placeholder="Full Name" onFocus={() => setNameFocus(true)} onBlur={() => setNameFocus(false)} />
+            </View>
             <View style={styles.inputContainer(emailFocus)}>
                 <Image source={message} style={styles.icon(emailFocus)} />
                 <TextInput inputMode="email" style={styles.input} placeholder="Your Email" onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} />
@@ -28,34 +34,19 @@ export default Login = ({navigation}) => {
                 <Image source={password} style={styles.icon(passwordFocus)} />
                 <TextInput inputMode="text" secureTextEntry={true} style={styles.input} placeholder="Password" onFocus={() => setPasswordFocus(true)} onBlur={() => setPasswordFocus(false)}/>
             </View>
-            <TouchableOpacity style={styles.button}>
+            <View style={styles.inputContainer(passwordagainFocus)}>
+                <Image source={password} style={styles.icon(passwordagainFocus)} />
+                <TextInput inputMode="text" secureTextEntry={true} style={styles.input} placeholder="Password Again" onFocus={() => setPasswordagainFocus(true)} onBlur={() => setPasswordagainFocus(false)}/>
+            </View>
+
+            <TouchableOpacity style={styles.button} onPress={()=> {navigation.navigate('WriteReview')}}>
                 <Text style={styles.buttonText}>Sign In</Text>
             </TouchableOpacity>
 
-            <View style={styles.orBar}>
-                <View style={styles.bar} />
-                <Text style={styles.or} >OR</Text>
-                <View style={styles.bar} />
-            </View>
-
-            <TouchableOpacity style={styles.orButton}>
-                <Image style={styles.orImage} source={google} />
-                <Text style={styles.orText}>Login with Google</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.orButton}>
-                <Image style={styles.orImage} source={facebook} />
-                <Text style={styles.orText}>Login with Facebook</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.fp}>
-                <Text style={styles.fpText}>Forgot Password?</Text>
-            </TouchableOpacity>
-
             <View style={styles.registerContainer}>
-                <Text style={styles.rText}>Don't have an account? </Text>
-                <TouchableOpacity onPress={() => {navigation.navigate('Register')}}>
-                    <Text style={styles.fpText}>Register</Text>
+                <Text style={styles.rText}>Have an account? </Text>
+                <TouchableOpacity onPress={() => {navigation.navigate('Login')}}>
+                    <Text style={styles.fpText}>Sign In</Text>
                 </TouchableOpacity>
             </View>
 
@@ -71,7 +62,7 @@ const styles = StyleSheet.create({
     imageContainer: {
         backgroundColor: 'transparent',
         alignSelf: 'center',
-        marginTop: 80
+        marginTop: 150
     },
     image: {
         alignSelf: 'center',
@@ -140,51 +131,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         color: 'white'
     },
-    orBar: {
-        flexDirection: 'row',
-        height: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingHorizontal: 20,
-        marginVertical: 10
-    },
-    bar: {
-        backgroundColor: '#EBF0FF',
-        flex: 1,
-        height: 1
-    },
-    or: {
-        color: '#9098B1',
-        marginHorizontal: 10,
-        fontWeight: '900'
-    },
-    orButton: {
-        borderWidth: 1,
-        borderColor: '#EBF0FF',
-        height: 60,
-        marginVertical: 5,
-        marginHorizontal: 20,
-        borderRadius: 5,
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: 20
-    },
-    orImage: {
-        backgroundColor: 'transparent'
-    },
-    orText: {
-        flex: 1,
-        textAlign: 'center',
-        color: '#9098B1',
-        fontWeight: '900',
-        fontSize: 15
-    },
-    fp: {
-        marginHorizontal: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginVertical: 10
-    },
     fpText: {
         fontWeight: '800',
         color: '#40BFFF',
@@ -194,7 +140,8 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginVertical: 15
     },
     rText: {
         fontWeight: '800',
