@@ -1,60 +1,65 @@
-import { StyleSheet, View, Text,Image, TextInput, TouchableOpacity  } from "react-native";
-import { Ionicons } from '@expo/vector-icons';
+import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity } from "react-native";
 import logo from './../assets/logoblue.png';
 import facebook from './../assets/facebook.png';
 import google from './../assets/google.png';
 import message from './../assets/message.png'
 import password from './../assets/password.png';
 
+
+import { useState } from "react";
+
 export default Login = () => {
+    const [emailFocus, setEmailFocus] = useState(false);
+    const [passwordFocus, setPasswordFocus] = useState(false);
+
     return (
-            <View style={styles.container}>
-                <View style={styles.imageContainer}>
-                    <Image style={styles.image} source={logo} />
-                    <Text style={styles.text}> Welcome to Slipshoe</Text>
-                    <Text style={styles.imageSubText}> Sign in to to continue</Text>
-                </View>
-
-                <View style={styles.inputContainer}>
-                    <Image source={message} style={styles.icon} />
-                    <TextInput inputMode="email" style={styles.input} placeholder="Your Email"/>
-                </View>
-                <View style={styles.inputContainer}>
-                    <Image source={password} style={styles.icon} />
-                    <TextInput inputMode="text" secureTextEntry={true} style={styles.input} placeholder="Password"/>
-                </View>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Sign In</Text>
-                </TouchableOpacity>
-
-                <View style={styles.orBar}>
-                    <View style={styles.bar} />
-                    <Text style={styles.or} >OR</Text>
-                    <View style={styles.bar} />
-                </View>
-
-                <TouchableOpacity style={styles.orButton}>
-                    <Image style={styles.orImage} source={google}/>
-                    <Text style={styles.orText}>Login with Google</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.orButton}>
-                    <Image style={styles.orImage} source={facebook}/>
-                    <Text style={styles.orText}>Login with Facebook</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.fp}>
-                    <Text style={styles.fpText}>Forgot Password?</Text>
-                </TouchableOpacity>
-
-                <View style={styles.registerContainer}>
-                    <Text style={styles.rText}>Don't have an account? </Text>
-                    <TouchableOpacity >
-                        <Text style={styles.fpText}>Register</Text>
-                    </TouchableOpacity>
-                </View>
-
+        <View style={styles.container}>
+            <View style={styles.imageContainer}>
+                <Image style={styles.image} source={logo} />
+                <Text style={styles.text}> Welcome to Slipshoe</Text>
+                <Text style={styles.imageSubText}> Sign in to to continue</Text>
             </View>
+
+            <View style={styles.inputContainer(emailFocus)}>
+                <Image source={message} style={styles.icon(emailFocus)} />
+                <TextInput inputMode="email" style={styles.input} placeholder="Your Email" onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} />
+            </View>
+            <View style={styles.inputContainer(passwordFocus)}>
+                <Image source={password} style={styles.icon(passwordFocus)} />
+                <TextInput inputMode="text" secureTextEntry={true} style={styles.input} placeholder="Password" onFocus={() => setPasswordFocus(true)} onBlur={() => setPasswordFocus(false)}/>
+            </View>
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText}>Sign In</Text>
+            </TouchableOpacity>
+
+            <View style={styles.orBar}>
+                <View style={styles.bar} />
+                <Text style={styles.or} >OR</Text>
+                <View style={styles.bar} />
+            </View>
+
+            <TouchableOpacity style={styles.orButton}>
+                <Image style={styles.orImage} source={google} />
+                <Text style={styles.orText}>Login with Google</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.orButton}>
+                <Image style={styles.orImage} source={facebook} />
+                <Text style={styles.orText}>Login with Facebook</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.fp}>
+                <Text style={styles.fpText}>Forgot Password?</Text>
+            </TouchableOpacity>
+
+            <View style={styles.registerContainer}>
+                <Text style={styles.rText}>Don't have an account? </Text>
+                <TouchableOpacity >
+                    <Text style={styles.fpText}>Register</Text>
+                </TouchableOpacity>
+            </View>
+
+        </View>
     )
 };
 
@@ -69,7 +74,7 @@ const styles = StyleSheet.create({
         marginTop: 80
     },
     image: {
-        alignSelf: 'center'
+        alignSelf: 'center',
     },
     text: {
         fontSize: 18,
@@ -80,24 +85,42 @@ const styles = StyleSheet.create({
     imageSubText: {
         alignSelf: 'center',
         color: '#9098B1',
-        marginBottom: 30
+        marginBottom: 30,
     },
-    inputContainer: {
-        backgroundColor: 'transparent',
-        flexDirection: 'row',
-        marginHorizontal: 20,
-        marginVertical: 5,
-        height: 50,
-        borderWidth: 1,
-        borderColor: '#EBF0FF',
-        borderRadius: 5
+    inputContainer: (focus) => {
+        bcolor = "#EBF0FF"
+        if (focus) {
+            bcolor = "#40BFFF"
+        }
+
+
+        return {
+            backgroundColor: 'transparent',
+            flexDirection: 'row',
+            marginHorizontal: 20,
+            marginVertical: 5,
+            height: 50,
+            borderWidth: 1,
+            borderColor: bcolor,
+            borderRadius: 5,
+        }
     },
     input: {
         flex: 1
     },
-    icon: {
-        alignSelf: 'center',
-        marginHorizontal: 10
+    icon: (focus) => {
+        tcolor = {}
+        if(focus) {
+            tcolor = {tintColor: '#40BFFF'}
+        }
+
+        return {
+            alignSelf: 'center',
+            marginHorizontal: 10,
+            color: 'red',
+            ...tcolor
+        }
+
     },
     button: {
         backgroundColor: '#40BFFF',
