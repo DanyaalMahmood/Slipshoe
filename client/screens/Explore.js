@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
     },
     categoryContainer: {
         alignItems: 'flex-start',
-        marginVertical: 20,
+        marginVertical: 10,
         flexWrap: 'wrap'
     },
     categoryButton: {
@@ -264,10 +264,10 @@ const styles = StyleSheet.create({
     roundedIcon: {
         alignItems: 'center',
         justifyContent: 'center',
-        marginHorizontal: 4,
+        marginHorizontal: 5,
         // backgroundColor: 'pink',
-        width: 70,
-        height: 70,
+        width: 65,
+        height: 65,
         borderRadius: 35,
         borderWidth: 2,
         borderColor: '#EBF0FF',
