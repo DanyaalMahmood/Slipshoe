@@ -39,7 +39,7 @@ export default Register = ({navigation}) => {
                 <TextInput inputMode="text" secureTextEntry={true} style={styles.input} placeholder="Password Again" onFocus={() => setPasswordagainFocus(true)} onBlur={() => setPasswordagainFocus(false)}/>
             </View>
 
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={()=> {navigation.navigate('WriteReview')}}>
                 <Text style={styles.buttonText}>Sign In</Text>
             </TouchableOpacity>
 
