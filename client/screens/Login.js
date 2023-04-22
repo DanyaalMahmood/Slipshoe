@@ -38,7 +38,7 @@ export default Login = ({navigation}) => {
                 <View style={styles.bar} />
             </View>
 
-            <TouchableOpacity style={styles.orButton} onPress={()=>{navigation.navigate('Explore')}}>
+            <TouchableOpacity style={styles.orButton} onPress={()=>{navigation.navigate('Home')}}>
                 <Image style={styles.orImage} source={google} />
                 <Text style={styles.orText}>Login with Google</Text>
             </TouchableOpacity>

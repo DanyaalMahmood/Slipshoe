@@ -12,6 +12,7 @@ import NotificationOffer from './screens/NotificationOffer';
 import NotificationActivity from './screens/NotificationActivity';
 import NotificationFeed from './screens/NotificationFeed';
 import Explore from './screens/Explore';
+import Home from './screens/Home';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,7 @@ export default function App() {
         <Stack.Screen name="NotificationActivity" component={NotificationActivity}/>
         <Stack.Screen name="NotificationFeed" component={NotificationFeed}/>
         <Stack.Screen name="Explore" component={Explore}/>
+        <Stack.Screen name="Home" component={Home}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
